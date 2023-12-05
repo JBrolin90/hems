@@ -13,10 +13,14 @@ On Error GoTo CatchAndFinally
 CatchAndFinally:
 'Clean up here...
 
-If Err.Number <> 0 Then 'Handle the error
-  'ReRaise theError
-  Err.Raise Err.Number, Err.Source, Err.Description, Err.HelpContext
-  'Or fix the error
-  ' ....
-End If
+  If Err.Number <> 0 Then 'Handle the error
+    'ReRaise theError
+    Err.Raise Err.Number, Err.Source, Err.Description, Err.HelpContext
+    'Or fix the error
+    ' ....
+  End If
+End Sub
+
+Public Sub TestMe()
+  ErrorTemplate
 End Sub
