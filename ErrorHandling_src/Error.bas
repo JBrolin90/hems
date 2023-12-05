@@ -13,7 +13,7 @@ On Error GoTo CatchAndFinally
 CatchAndFinally:
 'Clean up here...
 
-If Err <> 0 Then 'Handle the error
+If Err.Number <> 0 Then 'Handle the error
   'ReRaise theError
   Err.Raise Err.Number, Err.Source, Err.Description, Err.HelpContext
   'Or fix the error
