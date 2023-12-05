@@ -7,23 +7,25 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = True
+'@Exposed
+'@IgnoreModule UseMeaningfulName
 '@Folder("Database")
 '@Interface
 
 Option Explicit
 
-Public Function Query(sqlQuery As String) As DAO.Recordset
+Public Function Query(ByVal sqlQuery As String) As DAO.Recordset
 End Function
 
-Public Function FunctionQuery(InSqlFunction As String) As DAO.Recordset
+Public Function FunctionQuery(ByVal InSqlFunction As String) As DAO.Recordset
 End Function
-Public Function FunctionQuery1(InSqlFunction As String, Param As Variant) As DAO.Recordset
+Public Function FunctionQuery1(ByVal InSqlFunction As String, ByVal Param As String) As DAO.Recordset
 End Function
-Public Function FunctionQuery2(InSqlFunction As String, Param1 As Variant, Param2 As Variant) As DAO.Recordset
+Public Function FunctionQuery2(ByVal InSqlFunction As String, ByVal Param1 As String, ByVal Param2 As String) As DAO.Recordset
 End Function
-Public Function FunctionQuery3(InSqlFunction As String, Param1 As Variant, Param2 As Variant, Param3 As Variant) As DAO.Recordset
+Public Function FunctionQuery3(ByVal InSqlFunction As String, ByVal Param1 As String, ByVal Param2 As String, ByVal Param3 As String) As DAO.Recordset
 End Function
-Public Function Execute(sqlExec As String) As Variant
+Public Function Execute(ByVal sqlExec As String) As Variant
 End Function
 Public Function MonthNames() As DAO.Recordset
 End Function

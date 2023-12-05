@@ -1,0 +1,23 @@
+﻿'@Folder("Database")
+Option Compare Database
+Option Explicit
+
+'@EntryPoint
+Private Sub btnGetMonthNamesTest_Click()
+  TestFunctions.GetMonthNamesTest
+End Sub
+
+'@EntryPoint
+Private Sub btnTestPTQuery_Click()
+  TestFunctions.TestPTQuery
+End Sub
+
+'@EntryPoint
+Private Sub btnTestQueryWithOneParameter_Click()
+  TestFunctions.TestQueryWithOneParameter
+End Sub
+
+'@EntryPoint
+Private Sub btnTestQueryWithSQLFunction_Click()
+  TestFunctions.TestQueryWithSQLFunction
+End Sub
