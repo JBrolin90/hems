@@ -1,0 +1,77 @@
+﻿'@Folder("Invoice")
+Option Compare Database
+Option Explicit
+
+Private Sub btnCreateInvoice_Click()
+  Dim Invoice As New CInvoice
+  Dim customerInvoice As New CCustomerInvoice
+  customerInvoice.Init Me.cbCustomer, Me.tbYear, Me.cbMonth
+  If customerInvoice.RUTInvoiceValue <> vbNullString Then
+    Invoice.CreateDebitInvoice Me.cbCustomer, Me.tbYear, Me.cbMonth, Me.tbInvoiceDate, True, False
+  End If
+  If customerInvoice.ROTInvoiceValue <> vbNullString Then
+    Invoice.CreateDebitInvoice Me.cbCustomer, Me.tbYear, Me.cbMonth, Me.tbInvoiceDate, False, True
+  End If
+  If customerInvoice.NormalInvoiceValue <> vbNullString Then
+    Invoice.CreateDebitInvoice Me.cbCustomer, Me.tbYear, Me.cbMonth, Me.tbInvoiceDate, False, False
+  End If
+End Sub
+
+Private Sub btnCreditInvoice_Click()
+  Dim Invoice As New CInvoice
+  Invoice.CreateCreditInvoice Me.cbCustomer, Me.tbYear, Me.cbMonth, Me.tbInvoiceDate, True, False
+End Sub
+
+Private Sub btnPrintOverview_Click()
+  DoCmd.OpenReport "spMonthlyInvoices", acViewPreview
+End Sub
+
+Private Sub cbCustomer_AfterUpdate()
+  'FillMontlyOverview
+  'Me.tbInvoiceDate = GetLastDayOfMonth(DateSerial(Me.tbYear, Me.cbMonth, 1))
+End Sub
+
+Private Sub cbMonth_AfterUpdate()
+  FillCustomersListbox
+End Sub
+
+Private Sub btnCreateAllInvoices_Click()
+  Dim Invoice As New CInvoice
+  Dim countInvoices As Long
+  Dim i As Long
+  countInvoices = Me.cbCustomer.ListCount
+  For i = 0 To countInvoices - 1
+    Invoice.CreateDebitInvoice Me.cbCustomer.ItemData(i), Me.tbYear, Me.cbMonth
+    Invoice.Save
+    Invoice.CloseMe
+    DoEvents
+  Next
+
+End Sub
+
+Private Sub Form_Load()
+  Me.tbYear.Value = Year(Now())
+  'Me.tb = Month(Now())
+  FillMonthsCombobox
+  FillCustomersListbox
+End Sub
+
+Private Sub tbYear_AfterUpdate()
+  FillCustomersListbox
+  FillMontlyOverview
+End Sub
+
+Private Sub FillCustomersListbox()
+  Dim rst As DAO.Recordset
+  Set rst = Database.Functions.GetDBObject().FunctionQuery2("CustomersToInvoice", Me.tbYear.Value, Me.cbMonth.Value)
+  Set Me.cbCustomer.Recordset = rst
+  Me.cbCustomer.Value = Me.cbCustomer.ItemData(0)
+End Sub
+
+Private Sub FillMonthsCombobox()
+  Dim rst As DAO.Recordset
+  Set rst = Database.GetDBObject().MonthNames()
+  Set Me.cbMonth.Recordset = rst
+  Me.cbMonth.Value = Me.cbMonth.ItemData(Month(Now()) - 1)
+End Sub
+
