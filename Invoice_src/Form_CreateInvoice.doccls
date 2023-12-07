@@ -3,23 +3,23 @@ Option Compare Database
 Option Explicit
 
 Private Sub btnCreateInvoice_Click()
-  Dim Invoice As New CInvoice
-  Dim customerInvoice As New CCustomerInvoice
-  customerInvoice.Init Me.cbCustomer, Me.tbYear, Me.cbMonth
-  If customerInvoice.RUTInvoiceValue <> vbNullString Then
-    Invoice.CreateDebitInvoice Me.cbCustomer, Me.tbYear, Me.cbMonth, Me.tbInvoiceDate, True, False
-  End If
-  If customerInvoice.ROTInvoiceValue <> vbNullString Then
-    Invoice.CreateDebitInvoice Me.cbCustomer, Me.tbYear, Me.cbMonth, Me.tbInvoiceDate, False, True
-  End If
-  If customerInvoice.NormalInvoiceValue <> vbNullString Then
-    Invoice.CreateDebitInvoice Me.cbCustomer, Me.tbYear, Me.cbMonth, Me.tbInvoiceDate, False, False
-  End If
+'  Dim Invoice As New CInvoice
+'  Dim customerInvoice As New CCustomerInvoice
+'  customerInvoice.Init Me.cbCustomer, Me.tbYear, Me.cbMonth
+'  If customerInvoice.RUTInvoiceValue <> vbNullString Then
+'    Invoice.CreateDebitInvoice Me.cbCustomer, Me.tbYear, Me.cbMonth, Me.tbInvoiceDate, True, False
+'  End If
+'  If customerInvoice.ROTInvoiceValue <> vbNullString Then
+'    Invoice.CreateDebitInvoice Me.cbCustomer, Me.tbYear, Me.cbMonth, Me.tbInvoiceDate, False, True
+'  End If
+'  If customerInvoice.NormalInvoiceValue <> vbNullString Then
+'    Invoice.CreateDebitInvoice Me.cbCustomer, Me.tbYear, Me.cbMonth, Me.tbInvoiceDate, False, False
+'  End If
 End Sub
 
 Private Sub btnCreditInvoice_Click()
   Dim Invoice As New CInvoice
-  Invoice.CreateCreditInvoice Me.cbCustomer, Me.tbYear, Me.cbMonth, Me.tbInvoiceDate, True, False
+'  Invoice.CreateCreditInvoice Me.cbCustomer, Me.tbYear, Me.cbMonth, Me.tbInvoiceDate, True, False
 End Sub
 
 Private Sub btnPrintOverview_Click()
@@ -40,12 +40,12 @@ Private Sub btnCreateAllInvoices_Click()
   Dim countInvoices As Long
   Dim i As Long
   countInvoices = Me.cbCustomer.ListCount
-  For i = 0 To countInvoices - 1
-    Invoice.CreateDebitInvoice Me.cbCustomer.ItemData(i), Me.tbYear, Me.cbMonth
-    Invoice.Save
-    Invoice.CloseMe
-    DoEvents
-  Next
+'  For i = 0 To countInvoices - 1
+'    Invoice.CreateDebitInvoice Me.cbCustomer.ItemData(i), Me.tbYear, Me.cbMonth
+'    Invoice.Save
+'    Invoice.CloseMe
+'    DoEvents
+'  Next
 
 End Sub
 
@@ -58,7 +58,7 @@ End Sub
 
 Private Sub tbYear_AfterUpdate()
   FillCustomersListbox
-  FillMontlyOverview
+'  FillMontlyOverview
 End Sub
 
 Private Sub FillCustomersListbox()

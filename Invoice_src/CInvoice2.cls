@@ -13,7 +13,7 @@ Option Explicit
 
 Private Year As Integer
 Private Month As Integer
-Private CustomerID As Integer
+Private customerID As Integer
 
 Private rstCustomer As DAO.Recordset
 Private rstInvoiceItemValues As DAO.Recordset
@@ -30,13 +30,13 @@ Public Property Get TotalsIncVAT() As DAO.Recordset
   Set TotalsIncVAT = rstInvoiceTotalsIncVAT
 End Property
 Public Property Get TotalsExVAT() As DAO.Recordset
-  Set TotalsExVAT = rstInvliceTotalsExVAT
+'  Set TotalsExVAT = rstInvliceTotalsExVAT
 End Property
 
 Public Sub Init(inYear As Integer, inMonth As Integer, inCustomerId As Integer)
   Year = inYear
   Month = inMonth
-  CustomerID = inCustomerId
+  customerID = inCustomerId
   
   InitCustomer
   InitInvoiceItemValues
@@ -45,16 +45,16 @@ Public Sub Init(inYear As Integer, inMonth As Integer, inCustomerId As Integer)
 End Sub
 
 Private Sub InitCustomer()
-  Set rstCustomer = mInvoice.GetCustomer(CustomerID)
+'  Set rstCustomer = mInvoice.GetCustomer(customerID)
 End Sub
 
 Private Sub InitInvoiceItemValues()
-  Set rstInvoiceItemValues = mInvoice.GetInvoiceItemValues(Year, Month, CustomerID)
+'  Set rstInvoiceItemValues = mInvoice.GetInvoiceItemValues(Year, Month, customerID)
 End Sub
 Private Sub InitInvoiceTotalsIncVAT()
-  Set rstInvoiceTotalsIncVAT = mInvoice.GetInvoiceTotalsIncVAT(Year, Month, CustomerID)
+'  Set rstInvoiceTotalsIncVAT = mInvoice.GetInvoiceTotalsIncVAT(Year, Month, customerID)
 End Sub
 Private Sub InitInvoiceTotalsExVAT()
-  Set rstInvoiceTotalsExVAT = mInvoice.GetInvoiceTotalsExVAT(Year, Month, CustomerID)
+'  Set rstInvoiceTotalsExVAT = mInvoice.GetInvoiceTotalsExVAT(Year, Month, customerID)
 End Sub
 

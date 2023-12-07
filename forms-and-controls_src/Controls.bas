@@ -1,8 +1,9 @@
 Attribute VB_Name = "Controls"
 '@IgnoreModule SetAssignmentWithIncompatibleObjectType
-'@Folder("Main")
+'@Folder "DefaultImplementation"
 Option Compare Database
 Option Explicit
+Option Private Module
 
 
 Public Function CreateTextBox(ByVal frmName As String, ByVal name As String, ByVal Left As Long, ByVal Top As Long, Optional ByVal Width As Long = 2000, Optional ByVal Height As Long = 240) As TextBox

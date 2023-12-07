@@ -7,7 +7,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
-'@Folder("Main")
+'@Folder "DefaultImplementation"
 Option Compare Database
 Option Explicit
 
@@ -15,6 +15,9 @@ Implements ICFormManipulation
 
 Private Sub ICFormManipulation_CreateStandardForm(ByVal formName As String)
   FormManipulation.CreateStarterForm formName
+End Sub
+Private Sub ICFormManipulation_BuildSingleForm(ByVal formName As String)
+  Populate.BuildSingleForm formName
 End Sub
 Private Function ICFormManipulation_FormMode(ByVal formName As String) As Form
   Set ICFormManipulation_FormMode = FormManipulation.FormMode(formName)

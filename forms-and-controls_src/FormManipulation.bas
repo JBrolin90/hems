@@ -1,8 +1,9 @@
 Attribute VB_Name = "FormManipulation"
 '@IgnoreModule ParameterCanBeByVal
-'@Folder("Main")
+'@Folder "DefaultImplementation"
 Option Compare Database
 Option Explicit
+Option Private Module
 
 Public Sub CreateStarterForm(ByVal formName As String)
   Dim StarterForm As Form

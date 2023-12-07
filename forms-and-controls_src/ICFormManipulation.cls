@@ -8,11 +8,14 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 '@IgnoreModule AnnotationInIncompatibleComponentType
-'@Folder("Main")
+'@Folder("Interface")
 '@Interface
 
 Option Explicit
 
+'@EntryPoint
+Public Sub BuildSingleForm(ByVal formName As String)
+End Sub
 '@EntryPoint
 Public Sub CreateStandardForm(ByVal formName As String)
 End Sub
