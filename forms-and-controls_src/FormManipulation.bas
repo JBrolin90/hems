@@ -1,47 +1,46 @@
 Attribute VB_Name = "FormManipulation"
+'@IgnoreModule ParameterCanBeByVal
 '@Folder("Main")
 Option Compare Database
 Option Explicit
 
-Public Function CreateStarterForm(formName As String) As AccessObject
-  Dim frm As Form
+Public Sub CreateStarterForm(ByVal formName As String)
+  Dim StarterForm As Form
   Dim tempName As String
-  Set frm = CreateForm
+  Set StarterForm = CreateForm
   DoCmd.Restore
-  tempName = frm.name
+  tempName = StarterForm.name
   DoCmd.Save acForm, tempName
   DoCmd.Close acForm, tempName, acSaveYes
   DoCmd.Rename formName, acForm, tempName
-  Set CreateStarterForm = CurrentProject.AllForms(formName)
-End Function
+End Sub
 
-Public Function DesignMode(frmName As String) As Form
-  Dim frm As Form
+Public Function DesignMode(ByVal frmName As String) As Form
   DoCmd.OpenForm frmName, acDesign
-  Set DesignMode = Forms(frmName)
+  Set DesignMode = Forms.Item(frmName)
 End Function
 
-Public Function FormMode(frmName As String) As Form
+Public Function FormMode(ByVal frmName As String) As Form
   DoCmd.OpenForm frmName, acNormal
-  Set FormMode = Forms(frmName)
+  Set FormMode = Forms.Item(frmName)
 End Function
 
-Public Sub CloseForm(frmName As String)
+Public Sub CloseForm(ByVal frmName As String)
   DoCmd.Close acForm, frmName
 End Sub
 
-Public Sub SaveForm(frmName As String)
+Public Sub SaveForm(ByVal frmName As String)
   DoCmd.Save acForm, frmName
 End Sub
 
-Public Sub DeleteForm(frmName As String)
+Public Sub DeleteForm(ByVal frmName As String)
   DoCmd.DeleteObject acForm, frmName
 End Sub
 
-Public Function Exists(frmName As String)
-  Dim f As AccessObject
+Public Function Exists(ByVal frmName As String) As Boolean
+  Dim ExistingForm As AccessObject
   On Error GoTo NonExisting
-  Set f = CurrentProject.AllForms(frmName)
+  Set ExistingForm = CurrentProject.AllForms.Item(frmName)
   Exists = True
   Exit Function
 NonExisting:

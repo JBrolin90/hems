@@ -7,18 +7,24 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
+'@IgnoreModule AnnotationInIncompatibleComponentType
 '@Folder("Main")
 '@Interface
 
 Option Explicit
 
-Public Function CreateStandardForm(formName As String) As Form
-End Function
-Public Function DesignMode(frmName As String) As Form
-End Function
-Public Function FormMode(frmName As String) As Form
-End Function
-Private Sub CloseForm(formName As String)
+'@EntryPoint
+Public Sub CreateStandardForm(ByVal formName As String)
 End Sub
-Private Sub DeleteForm(formName As String)
+'@EntryPoint
+Public Function DesignMode(ByVal frmName As String) As Form
+End Function
+'@EntryPoint
+Public Function FormMode(ByVal frmName As String) As Form
+End Function
+'@EntryPoint
+Public Sub CloseForm(ByVal formName As String)
+End Sub
+'@EntryPoint
+Public Sub DeleteForm(ByVal formName As String)
 End Sub

@@ -35,19 +35,19 @@ Private Sub TestCleanup()
 End Sub
 
 '@TestMethod("Uncategorized")
-Private Sub TestMethod1()                        'TODO Rename test
+Private Sub TestCreateAForm()                        'TODO Rename test
     On Error GoTo TestFail
     
     'Arrange:
     Dim formName As String
     Dim obj As AccessObject
-    Dim frm As Form
+    Dim TestForm As Form
     'Act:
     formName = "TestMethod1Form"
-    Set frm = CreateStarterForm(formName)
-    Set obj = CurrentProject.AllForms(formName)
-    Set frm = DesignMode(formName)
-    Set frm = FormMode(formName)
+    CreateStarterForm formName
+    Set obj = CurrentProject.AllForms.Item(formName)
+    Set TestForm = DesignMode(formName)
+    Set TestForm = FormMode(formName)
     CloseForm formName
     DeleteForm formName
     'Assert:
