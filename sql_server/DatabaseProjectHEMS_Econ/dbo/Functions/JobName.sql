@@ -1,0 +1,12 @@
+CREATE FUNCTION [dbo].[JobName]
+(
+	@JobId int
+)
+RETURNS VARCHAR(15)
+AS
+BEGIN
+	RETURN (SELECT JobName FROM Jobs WHERE ID=@JobId)
+END
+
+GO
+

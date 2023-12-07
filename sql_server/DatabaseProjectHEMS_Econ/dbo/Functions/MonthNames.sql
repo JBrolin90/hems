@@ -1,0 +1,13 @@
+CREATE FUNCTION [dbo].[MonthNames]
+(
+)
+RETURNS TABLE
+AS
+RETURN
+(
+	SELECT *  
+	FROM Months
+)
+
+GO
+
