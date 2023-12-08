@@ -4,20 +4,25 @@ Option Compare Database
 Option Explicit
 
 Public Sub BuildAddressCustomerForm()
-  FormsAndCOntrols.Factory.GetManipulator().BuildSingleForm "AddressCustomers"
+  FormsAndControls.Factory.GetManipulator().BuildSingleForm New CustomerFormData
 End Sub
 
-Public Sub FillForm()
-  Dim rstAddressCustomer As DAO.Recordset
-  Dim x As Variant
+Public Sub FillAddressCustomerForm(customerId As Long)
+  Dim formData As New CustomerFormData
+  formData.customerId = customerId
+  FillForm formData
+End Sub
+
+Private Sub FillForm(ByVal formData As iFormData)
+  Dim frmAddr As Form
+  Set frmAddr = FormsAndControls.Factory.GetManipulator().FormMode(formData.FormName)
   Dim f As DAO.Field
-  Dim frmAddr
-  Set rstAddressCustomer = Database.GetDBObject().FunctionQuery1("AddressCustomer", 1)
-  x = rstAddressCustomer.Fields(1).Value
-  Set frmAddr = FormsAndCOntrols.Factory.GetManipulator().FormMode("AddressCustomers")
-  For Each f In rstAddressCustomer.Fields
-    x = f.Value
-    frmAddr.Controls("tb_" + f.Name) = x
-    Debug.Print f.Name + " " + CStr(x)
+  For Each f In formData.Columns
+      frmAddr.Controls("tb_" + f.Name) = CStr(f.Value)
+      Debug.Print f.Name + ": " + CStr(f.Value)
   Next
+End Sub
+
+Public Sub TestArgs(ParamArray args() As Variant)
+  Debug.Print "LBound: " + CStr(LBound(args)) + " UBound: " + CStr(UBound(args))
 End Sub

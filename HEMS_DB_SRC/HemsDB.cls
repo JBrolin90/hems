@@ -16,53 +16,30 @@ Option Explicit
 
 Implements IHemsDB
 
-Private Function Query(ByVal sqlQuery As String) As DAO.Recordset
-  Set Query = PassThroughDBAccess.GetRecordsetPT(sqlQuery)
-End Function
-
-Private Function FunctionQuery(ByVal InSqlFunction As String) As DAO.Recordset
-  Set FunctionQuery = PassThroughDBAccess.GetSQLFunction(InSqlFunction)
-End Function
-Private Function FunctionQuery1(ByVal InSqlFunction As String, ByVal Param As String) As DAO.Recordset
-  Set FunctionQuery1 = PassThroughDBAccess.GetSQLFunction1(InSqlFunction, Param)
-End Function
-
-Private Function FunctionQuery2(ByVal InSqlFunction As String, ByVal Param1 As String, ByVal Param2 As Variant) As DAO.Recordset
-  Set FunctionQuery2 = PassThroughDBAccess.GetSQLFunction2(InSqlFunction, Param1, Param2)
-End Function
-
-Private Function FunctionQuery3(ByVal InSqlFunction As String, ByVal Param1 As String, ByVal Param2 As String, ByVal Param3 As String) As DAO.Recordset
-  Set FunctionQuery3 = PassThroughDBAccess.GetSQLFunction3(InSqlFunction, Param1, Param2, Param3)
-End Function
-
-
-Private Function Execute(ByVal sqlExec As String) As Variant
-  Err.Raise 999, "HemsDB.Execute", "Not implemented yet exception - " + sqlExec
-End Function
-
 Private Function IHemsDB_Query(ByVal sqlQuery As String) As DAO.Recordset
-  Set IHemsDB_Query = Query(sqlQuery)
+  Set IHemsDB_Query = PassThroughDBAccess.GetRecordsetPT(sqlQuery)
 End Function
 
 Private Function IHemsDB_FunctionQuery(ByVal InSqlFunction As String) As DAO.Recordset
-  Set IHemsDB_FunctionQuery = FunctionQuery(InSqlFunction)
+  Set IHemsDB_FunctionQuery = PassThroughDBAccess.GetSQLFunction(InSqlFunction)
 End Function
 Private Function IHemsDB_FunctionQuery1(ByVal InSqlFunction As String, ByVal Param As String) As DAO.Recordset
-  Set IHemsDB_FunctionQuery1 = FunctionQuery1(InSqlFunction, Param)
+  Set IHemsDB_FunctionQuery1 = PassThroughDBAccess.GetSQLFunction1(InSqlFunction, Param)
 End Function
 Private Function IHemsDB_FunctionQuery2(ByVal InSqlFunction As String, ByVal Param1 As String, ByVal Param2 As String) As DAO.Recordset
-  Set IHemsDB_FunctionQuery2 = FunctionQuery2(InSqlFunction, Param1, Param2)
+  Set IHemsDB_FunctionQuery2 = PassThroughDBAccess.GetSQLFunction2(InSqlFunction, Param1, Param2)
 End Function
 
 Private Function IHemsDB_FunctionQuery3(ByVal InSqlFunction As String, ByVal Param1 As String, ByVal Param2 As String, ByVal Param3 As String) As DAO.Recordset
-  Set IHemsDB_FunctionQuery3 = FunctionQuery3(InSqlFunction, Param1, Param2, Param3)
+  Set IHemsDB_FunctionQuery3 = PassThroughDBAccess.GetSQLFunction3(InSqlFunction, Param1, Param2, Param3)
 End Function
 
 Private Function IHemsDB_Execute(ByVal sqlExec As String) As Variant
-  IHemsDB_Execute = Execute(sqlExec)
+  Err.Raise 999, "HemsDB.Execute", "Not implemented yet exception - " + sqlExec
+  IHemsDB_Execute = Null
 End Function
 
 Private Function IHemsDB_MonthNames() As DAO.Recordset
-  Set IHemsDB_MonthNames = FunctionQuery("MonthNames")
+  Set IHemsDB_MonthNames = IHemsDB_FunctionQuery("MonthNames")
 End Function
 

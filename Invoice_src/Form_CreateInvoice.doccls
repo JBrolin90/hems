@@ -63,14 +63,14 @@ End Sub
 
 Private Sub FillCustomersListbox()
   Dim rst As DAO.Recordset
-  Set rst = Database.Functions.GetDBObject().FunctionQuery2("CustomersToInvoice", Me.tbYear.Value, Me.cbMonth.Value)
+  'Set rst = Hems_EconDB.Factory.DBObject().FunctionQuery2("CustomersToInvoice", Me.tbYear.Value, Me.cbMonth.Value
   Set Me.cbCustomer.Recordset = rst
   Me.cbCustomer.Value = Me.cbCustomer.ItemData(0)
 End Sub
 
 Private Sub FillMonthsCombobox()
   Dim rst As DAO.Recordset
-  Set rst = Database.GetDBObject().MonthNames()
+  Set rst = GetDBObject().MonthNames()
   Set Me.cbMonth.Recordset = rst
   Me.cbMonth.Value = Me.cbMonth.ItemData(Month(Now()) - 1)
 End Sub

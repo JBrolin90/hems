@@ -9,14 +9,13 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = True
 '@Exposed
 '@IgnoreModule UseMeaningfulName
-'@Folder("Database")
+'@Folder("Interface")
 '@Interface
 
 Option Explicit
 
 Public Function Query(ByVal sqlQuery As String) As DAO.Recordset
 End Function
-
 Public Function FunctionQuery(ByVal InSqlFunction As String) As DAO.Recordset
 End Function
 Public Function FunctionQuery1(ByVal InSqlFunction As String, ByVal Param As String) As DAO.Recordset

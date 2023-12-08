@@ -1,4 +1,4 @@
-﻿'@Folder("Database")
+﻿'@Folder("Tests")
 Option Compare Database
 Option Explicit
 

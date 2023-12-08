@@ -13,7 +13,7 @@ Option Explicit
 
 Private Year As Integer
 Private Month As Integer
-Private customerID As Integer
+Private customerId As Integer
 
 Private rstCustomer As DAO.Recordset
 Private rstInvoiceItemValues As DAO.Recordset
@@ -36,7 +36,7 @@ End Property
 Public Sub Init(inYear As Integer, inMonth As Integer, inCustomerId As Integer)
   Year = inYear
   Month = inMonth
-  customerID = inCustomerId
+  customerId = inCustomerId
   
   InitCustomer
   InitInvoiceItemValues
