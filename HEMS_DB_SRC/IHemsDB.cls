@@ -9,7 +9,7 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = True
 '@Exposed
 '@IgnoreModule UseMeaningfulName
-'@Folder("Interface")
+'@Folder "Abstract"
 '@Interface
 
 Option Explicit
@@ -23,6 +23,8 @@ End Function
 Public Function FunctionQuery2(ByVal InSqlFunction As String, ByVal Param1 As String, ByVal Param2 As String) As DAO.Recordset
 End Function
 Public Function FunctionQuery3(ByVal InSqlFunction As String, ByVal Param1 As String, ByVal Param2 As String, ByVal Param3 As String) As DAO.Recordset
+End Function
+Public Function GetSQLFunctionVariableNoOfParams(ByVal InSqlFunction As String, args As Variant) As DAO.Recordset
 End Function
 Public Function Execute(ByVal sqlExec As String) As Variant
 End Function

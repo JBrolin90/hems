@@ -20,10 +20,12 @@ Public Sub POC_TestPopulateAFewTextBoxes()
   Next
 End Sub
 
-Public Sub POC_CreateAForm()
+Public Sub POC_CreateAForm0()
   Dim frm As Form
   Dim frmName As String
-  frmName = "Customer"
+  Dim formData As IFormData
+  Set formData = New MyFormData
+  frmName = formData.FormName
   If FormManipulation.Exists(frmName) Then
     FormManipulation.CloseForm frmName
     FormManipulation.DeleteForm frmName
@@ -32,9 +34,25 @@ Public Sub POC_CreateAForm()
   Set frm = FormManipulation.DesignMode(frmName)
   
   Dim rstCustomer As DAO.Recordset
-  Set rstCustomer = Database.GetDBObject().FunctionQuery1("Customer", 1)
+  Set rstCustomer = Hems_EconDB.GetDBObject().FunctionQuery1("Customer", 1)
   
-  Populate.DistributeTextBoxes frmName, rstCustomer.Fields
+  Populate.DistributeTextBoxes formData
+End Sub
+
+Public Sub POC_CreateAForm()
+  Dim formData As IFormData
+  Dim frm As Form
+  Dim frmName As String
+  Set formData = New MyFormData
+  frmName = formData.FormName
+  If FormManipulation.Exists(frmName) Then
+    FormManipulation.CloseForm frmName
+    FormManipulation.DeleteForm frmName
+  End If
+  FormManipulation.CreateStarterForm (frmName)
+  Set frm = FormManipulation.DesignMode(frmName)
+  
+  Populate.DistributeTextBoxes formData
 End Sub
 
 Public Sub POC_PopulateAFewLabelTextBoxes()
@@ -65,32 +83,32 @@ Public Sub test()
   Debug.Print s
 End Sub
 
-Public Sub test2()
-  Dim VBAEditor As VBIDE.VBE
-  Dim VBAProject As VBIDE.VBProject
-  Dim VBAModule As VBIDE.VBComponent
-  Dim CodeModule As VBIDE.CodeModule
-  
-  Set VBAEditor = Application.VBE
-  Set VBAProject = VBAEditor.VBProjects.Item("Database1")
-  Set VBAModule = VBAProject.VBComponents.Item("Controls")
-  Set CodeModule = VBAModule.CodeModule
-  
-  Dim i As Long
-  For i = 1 To CodeModule.CountOfLines
-    Debug.Print CodeModule.lines(i, 1)
-  Next
-End Sub
-
-Public Function ThisProject() As String
-    Dim objVBProject As Object
-    Dim strReturn As String
-    For Each objVBProject In Application.VBE.VBProjects
-        If objVBProject.FileName = CurrentDb.name Then
-            strReturn = objVBProject.name
-            Exit For
-        End If
-    Next
-    ThisProject = strReturn
-End Function
-
+'Public Sub test2()
+'  Dim VBAEditor As VBIDE.VBE
+'  Dim VBAProject As VBIDE.VBProject
+'  Dim VBAModule As VBIDE.VBComponent
+'  Dim CodeModule As VBIDE.CodeModule
+'
+'  Set VBAEditor = Application.VBE
+'  Set VBAProject = VBAEditor.VBProjects.Item("Database1")
+'  Set VBAModule = VBAProject.VBComponents.Item("Controls")
+'  Set CodeModule = VBAModule.CodeModule
+'
+'  Dim i As Long
+'  For i = 1 To CodeModule.CountOfLines
+'    Debug.Print CodeModule.lines(i, 1)
+'  Next
+'End Sub
+'
+'Public Function ThisProject() As String
+'    Dim objVBProject As Object
+'    Dim strReturn As String
+'    For Each objVBProject In Application.VBE.VBProjects
+'        If objVBProject.FileName = CurrentDb.name Then
+'            strReturn = objVBProject.name
+'            Exit For
+'        End If
+'    Next
+'    ThisProject = strReturn
+'End Function
+'

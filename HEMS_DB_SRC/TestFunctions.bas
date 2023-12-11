@@ -20,6 +20,18 @@ Public Sub TestQueryWithOneParameter()
   rsCustomer.Close
 End Sub
 
+Public Sub TestGetSQLFunctionVariableNoOfParams(ByVal InSqlFunction As String, Optional args As Variant = Null)
+  Dim rst As DAO.Recordset
+  'https://www.vbforums.com/showthread.php?882187-RESOLVED-Passing-a-ParamArray-from-one-routine-to-another
+  Set rst = Factory.DBOject.GetSQLFunctionVariableNoOfParams(InSqlFunction, args)
+End Sub
+
+Public Sub TestSeveralGetSQLFunctionVariableNoOfParams()
+  TestGetSQLFunctionVariableNoOfParams "Customer", 1
+  TestGetSQLFunctionVariableNoOfParams "Customers"
+  TestGetSQLFunctionVariableNoOfParams "CustomersToInvoice", Array(2023, 10)
+End Sub
+
 Public Sub TestPTQuery()
   Dim rstCustomers As DAO.Recordset
   

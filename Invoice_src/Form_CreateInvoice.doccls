@@ -50,7 +50,7 @@ Private Sub btnCreateAllInvoices_Click()
 End Sub
 
 Private Sub Form_Load()
-  Me.tbYear.Value = Year(Now())
+  Me.tbYear.Value = year(Now())
   'Me.tb = Month(Now())
   FillMonthsCombobox
   FillCustomersListbox
@@ -72,6 +72,6 @@ Private Sub FillMonthsCombobox()
   Dim rst As DAO.Recordset
   Set rst = GetDBObject().MonthNames()
   Set Me.cbMonth.Recordset = rst
-  Me.cbMonth.Value = Me.cbMonth.ItemData(Month(Now()) - 1)
+  Me.cbMonth.Value = Me.cbMonth.ItemData(month(Now()) - 1)
 End Sub
 

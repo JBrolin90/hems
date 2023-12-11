@@ -11,8 +11,8 @@ Attribute VB_Exposed = False
 Option Compare Database
 Option Explicit
 
-Private Year As Integer
-Private Month As Integer
+Private year As Integer
+Private month As Integer
 Private customerId As Integer
 
 Private rstCustomer As DAO.Recordset
@@ -34,8 +34,8 @@ Public Property Get TotalsExVAT() As DAO.Recordset
 End Property
 
 Public Sub Init(inYear As Integer, inMonth As Integer, inCustomerId As Integer)
-  Year = inYear
-  Month = inMonth
+  year = inYear
+  month = inMonth
   customerId = inCustomerId
   
   InitCustomer

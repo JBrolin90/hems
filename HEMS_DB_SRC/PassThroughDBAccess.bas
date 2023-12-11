@@ -43,3 +43,25 @@ Public Function GetSQLFunction3(ByVal InSql As String, ByVal Param1 As String, B
   Set GetSQLFunction3 = GetRecordsetPT(sql)
 End Function
 
+  'https://www.vbforums.com/showthread.php?882187-RESOLVED-Passing-a-ParamArray-from-one-routine-to-another
+Public Function GetSQLFunctionVariableNoOfParams(ByVal InSqlFunction As String, args As Variant) As DAO.Recordset
+  Dim sql As String
+  Dim index As Long
+  sql = "SELECT * FROM " + InSqlFunction
+  If Not IsNull(args) Then
+    sql = sql + "("
+    Dim v As Variant
+    If IsArray(args) Then
+      For index = LBound(args) To UBound(args)
+        If index > LBound(args) Then sql = sql + ", "
+        v = args(index)
+        sql = sql + CStr(args(index))
+      Next
+    Else
+      sql = sql + CStr(args)
+    End If
+    sql = sql + ")"
+  End If
+  Set GetSQLFunctionVariableNoOfParams = GetRecordsetPT(sql)
+End Function
+

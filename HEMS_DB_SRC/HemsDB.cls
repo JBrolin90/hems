@@ -16,6 +16,7 @@ Option Explicit
 
 Implements IHemsDB
 
+
 Private Function IHemsDB_Query(ByVal sqlQuery As String) As DAO.Recordset
   Set IHemsDB_Query = PassThroughDBAccess.GetRecordsetPT(sqlQuery)
 End Function
@@ -32,6 +33,10 @@ End Function
 
 Private Function IHemsDB_FunctionQuery3(ByVal InSqlFunction As String, ByVal Param1 As String, ByVal Param2 As String, ByVal Param3 As String) As DAO.Recordset
   Set IHemsDB_FunctionQuery3 = PassThroughDBAccess.GetSQLFunction3(InSqlFunction, Param1, Param2, Param3)
+End Function
+
+Private Function IHemsDB_GetSQLFunctionVariableNoOfParams(ByVal InSqlFunction As String, args As Variant) As DAO.Recordset
+  Set IHemsDB_GetSQLFunctionVariableNoOfParams = GetSQLFunctionVariableNoOfParams(InSqlFunction, args)
 End Function
 
 Private Function IHemsDB_Execute(ByVal sqlExec As String) As Variant
