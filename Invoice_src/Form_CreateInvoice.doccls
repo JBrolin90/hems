@@ -27,7 +27,7 @@ Private Sub btnPrintOverview_Click()
 End Sub
 
 Private Sub cbCustomer_AfterUpdate()
-  'FillMontlyOverview
+  FillAddressCustomer
   'Me.tbInvoiceDate = GetLastDayOfMonth(DateSerial(Me.tbYear, Me.cbMonth, 1))
 End Sub
 
@@ -54,6 +54,7 @@ Private Sub Form_Load()
   'Me.tb = Month(Now())
   FillMonthsCombobox
   FillCustomersListbox
+  FillAddressCustomer
 End Sub
 
 Private Sub tbYear_AfterUpdate()
@@ -63,7 +64,7 @@ End Sub
 
 Private Sub FillCustomersListbox()
   Dim rst As DAO.Recordset
-  'Set rst = Hems_EconDB.Factory.DBObject().FunctionQuery2("CustomersToInvoice", Me.tbYear.Value, Me.cbMonth.Value
+  Set rst = Hems_EconDB.Factory.DBOject.FunctionQuery2("CustomersToInvoice", Me.tbYear.Value, Me.cbMonth.Value)
   Set Me.cbCustomer.Recordset = rst
   Me.cbCustomer.Value = Me.cbCustomer.ItemData(0)
 End Sub
@@ -72,6 +73,16 @@ Private Sub FillMonthsCombobox()
   Dim rst As DAO.Recordset
   Set rst = GetDBObject().MonthNames()
   Set Me.cbMonth.Recordset = rst
-  Me.cbMonth.Value = Me.cbMonth.ItemData(month(Now()) - 1)
+  Me.cbMonth.Value = Me.cbMonth.ItemData(month(Now()) - 2)
 End Sub
 
+Private Sub FillAddressCustomer()
+  Dim formData As iFormData
+  Set formData = FormsAndControls.Factory.BuildFormData("AddressCustomer", Me.cbCustomer.Value)
+  Dim frmAddr As Form
+  Set frmAddr = Me.AddressCustomer.Form
+  Dim f As DAO.Field
+  For Each f In formData.Columns
+      frmAddr.Controls("tb_" + f.Name) = CStr(f.Value)
+  Next
+End Sub

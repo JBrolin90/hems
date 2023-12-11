@@ -28,7 +28,7 @@ Public Sub FillCustomersToInvoiceForm(year As Long, month As Long)
   FillForm formData
 End Sub
 
-Private Sub FillForm(ByVal formData As iFormData)
+Public Sub FillForm(ByVal formData As iFormData)
   Dim frmAddr As Form
   Set frmAddr = FormsAndControls.Factory.BuildManipulator().FormMode(formData.FormName)
   Dim f As DAO.Field
