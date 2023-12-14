@@ -42,12 +42,15 @@ Public Sub AutoFit(ctl As Control)
   ctl.Width = lngWidth + 40   '40: horizontal buffer; may need adjusting
 End Sub
 
-Public Sub AutoFitPair(ctl1 As TextBox, ctl2 As Label)
+Public Function AutoFitPair(left As Long, ctl1 As TextBox, ctl2 As Label) As Long
   Dim Width1 As Long, Width2 As Long
-  Width1 = GetTextLength(ctl1, ctl1.Value)
-  Width2 = GetTextLength(ctl2, ctl2.Caption)
+  Width1 = GetTextLength(ctl1, Nz(ctl1.Value, ""))
+  Width2 = GetTextLength(ctl2, Nz(ctl2.Caption, ""))
+  ctl1.left = left
+  ctl2.left = left
   If Width2 > Width1 Then Width1 = Width2
   ctl1.Width = Width1 + 40   '40: horizontal buffer; may need adjusting
   ctl2.Width = Width2 + 40   '40: horizontal buffer; may need adjusting
-End Sub
+  AutoFitPair = ctl1.left + ctl1.Width
+End Function
 

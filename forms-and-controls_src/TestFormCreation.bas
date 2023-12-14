@@ -51,6 +51,7 @@ Public Sub FillContinuousForm(formName As String)
     Set c = frm.Controls(Controls.TextBoxPrefix + field.name)
     c.ControlSource = field.name
   Next
+  
   Dim fs As DAO.fields
   frm.Recordset.MoveFirst
   Dim i As Long

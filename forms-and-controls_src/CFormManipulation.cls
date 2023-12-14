@@ -23,6 +23,11 @@ End Sub
 Private Sub ICFormManipulation_BuildSingleForm(ByRef formData As IFormData)
   Populate.BuildSingleForm formData
 End Sub
+
+Private Sub ICFormManipulation_FillContinuousForm(formName As String)
+  TestFormCreation.FillContinuousForm formName
+End Sub
+
 Private Function ICFormManipulation_FormMode(ByVal formName As String) As Form
   Set ICFormManipulation_FormMode = FormManipulation.FormMode(formName)
 End Function

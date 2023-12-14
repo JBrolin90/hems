@@ -55,6 +55,7 @@ Private Sub Form_Load()
   FillMonthsCombobox
   FillCustomersListbox
   FillAddressCustomer
+  FillInvoiceItems
 End Sub
 
 Private Sub tbYear_AfterUpdate()
@@ -80,5 +81,12 @@ Private Sub FillAddressCustomer()
   Dim formData As iFormData
   Set formData = FormsAndControls.Factory.BuildFormData(Me.AddressCustomer.Form.Name, Me.cbCustomer.Value)
   FormsAndControls.BuildManipulator().FillFormTextBoxes Me.AddressCustomer.Form, formData
+  Debug.Print
+End Sub
+
+Private Sub FillInvoiceItems()
+  Dim formData As iFormData
+  Set formData = FormsAndControls.Factory.BuildFormData(Me.AddressCustomer.Form.Name, Me.tbYear.Value, Me.cbMonth.Value, Me.cbCustomer.Value)
+  FormsAndControls.BuildManipulator().FillContinuousForm Me.InvoiceItems.Form.Name
   Debug.Print
 End Sub

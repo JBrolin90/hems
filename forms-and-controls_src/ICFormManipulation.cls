@@ -37,3 +37,5 @@ End Sub
 '@EntryPoint
 Public Sub FillFormTextBoxes(inForm As Form, formData As IFormData)
 End Sub
+Public Sub FillContinuousForm(formName As String)
+End Sub

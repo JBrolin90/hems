@@ -41,3 +41,11 @@ End Sub
 Public Sub TestArgs(ParamArray args() As Variant)
   Debug.Print "LBound: " + CStr(LBound(args)) + " UBound: " + CStr(UBound(args))
 End Sub
+
+
+Public Sub BuildInvoiceItemsForm()
+  Dim formData As FormsAndControls.iFormData
+  Set formData = FormsAndControls.Factory.BuildFormData("InvoiceItems", 0, 0, 0)
+  FormsAndControls.Factory.BuildManipulator().BuildContinuousForm formData
+End Sub
+
