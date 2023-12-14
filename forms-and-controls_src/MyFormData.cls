@@ -16,12 +16,12 @@ Implements IFormData
 Private lArgs As Variant
 Private lFunctionQuery As String
 
-Public Property Get Columns() As DAO.Fields
-  Set Columns = Records.Fields
+Public Property Get Columns() As DAO.fields
+  Set Columns = Records.fields
 End Property
 
-Private Property Get FormName() As String
-  FormName = lFunctionQuery
+Private Property Get formName() As String
+  formName = lFunctionQuery
 End Property
 
 ' https://stackoverflow.com/questions/36313575/passing-an-array-of-arguments-to-callbyname-vba
@@ -42,12 +42,12 @@ End Property
 '-------------------------------------------------------------------
 '-------------- Interface implementation ---------------------------
 '-------------------------------------------------------------------
-Private Property Get IFormData_Columns() As DAO.Fields
+Private Property Get IFormData_Columns() As DAO.fields
   Set IFormData_Columns = Columns
 End Property
 
 Private Property Get IFormData_FormName() As String
-  IFormData_FormName = FormName
+  IFormData_FormName = formName
 End Property
 
 Private Property Get IFormData_Records() As DAO.Recordset

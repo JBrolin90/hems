@@ -5,7 +5,7 @@ Option Compare Database
 Option Explicit
 Option Private Module
 
-Public Sub CreateStarterForm(ByVal FormName As String)
+Public Sub CreateStarterForm(ByVal formName As String)
   Dim StarterForm As Form
   Dim tempName As String
   Set StarterForm = CreateForm
@@ -13,7 +13,7 @@ Public Sub CreateStarterForm(ByVal FormName As String)
   tempName = StarterForm.name
   DoCmd.Save acForm, tempName
   DoCmd.Close acForm, tempName, acSaveYes
-  DoCmd.Rename FormName, acForm, tempName
+  DoCmd.Rename formName, acForm, tempName
 End Sub
 
 Public Function DesignMode(ByVal frmName As String) As Form
@@ -49,9 +49,9 @@ NonExisting:
 End Function
 
 
-Public Sub FillFormTextBoxes(inForm as Form, formData as iFormData)
-  Dim field As DAO.Field
+Public Sub FillFormTextBoxes(inForm As Form, formData As IFormData)
+  Dim field As DAO.field
   For Each field In formData.Columns
-      inForm.Controls(Controls.TextBoxPrefix + field.Name) = CStr(field.Value)
+      inForm.Controls(Controls.TextBoxPrefix + field.name) = CStr(field.Value)
   Next
 End Sub

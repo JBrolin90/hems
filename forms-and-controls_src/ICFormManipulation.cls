@@ -17,7 +17,10 @@ Option Explicit
 Public Sub BuildSingleForm(ByRef formData As IFormData)
 End Sub
 '@EntryPoint
-Public Sub CreateStandardForm(ByVal FormName As String)
+Public Sub BuildContinuousForm(ByRef formData As IFormData)
+End Sub
+'@EntryPoint
+Public Sub CreateStandardForm(ByVal formName As String)
 End Sub
 '@EntryPoint
 Public Function DesignMode(ByVal frmName As String) As Form
@@ -26,11 +29,11 @@ End Function
 Public Function FormMode(ByVal frmName As String) As Form
 End Function
 '@EntryPoint
-Public Sub CloseForm(ByVal FormName As String)
+Public Sub CloseForm(ByVal formName As String)
 End Sub
 '@EntryPoint
-Public Sub DeleteForm(ByVal FormName As String)
+Public Sub DeleteForm(ByVal formName As String)
 End Sub
 '@EntryPoint
-Public Sub FillFormTextBoxes(inForm as Form, formData as iFormData)
+Public Sub FillFormTextBoxes(inForm As Form, formData As IFormData)
 End Sub

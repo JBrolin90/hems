@@ -12,11 +12,11 @@ Attribute VB_Exposed = True
 Option Compare Database
 Option Explicit
 
-Public Property Get FormName() As String
+Public Property Get formName() As String
 End Property
 
 Public Property Get Records() As DAO.Recordset
 End Property
 
-Public Property Get Columns() As DAO.Fields
+Public Property Get Columns() As DAO.fields
 End Property

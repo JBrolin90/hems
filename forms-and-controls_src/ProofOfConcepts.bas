@@ -25,7 +25,7 @@ Public Sub POC_CreateAForm0()
   Dim frmName As String
   Dim formData As IFormData
   Set formData = New MyFormData
-  frmName = formData.FormName
+  frmName = formData.formName
   If FormManipulation.Exists(frmName) Then
     FormManipulation.CloseForm frmName
     FormManipulation.DeleteForm frmName
@@ -36,7 +36,7 @@ Public Sub POC_CreateAForm0()
   Dim rstCustomer As DAO.Recordset
   Set rstCustomer = Hems_EconDB.GetDBObject().FunctionQuery1("Customer", 1)
   
-  Populate.DistributeTextBoxes formData
+  Populate.DistributeLabelTextBoxesVertically formData
 End Sub
 
 Public Sub POC_CreateAForm()
@@ -44,7 +44,7 @@ Public Sub POC_CreateAForm()
   Dim frm As Form
   Dim frmName As String
   Set formData = New MyFormData
-  frmName = formData.FormName
+  frmName = formData.formName
   If FormManipulation.Exists(frmName) Then
     FormManipulation.CloseForm frmName
     FormManipulation.DeleteForm frmName
@@ -52,7 +52,7 @@ Public Sub POC_CreateAForm()
   FormManipulation.CreateStarterForm (frmName)
   Set frm = FormManipulation.DesignMode(frmName)
   
-  Populate.DistributeTextBoxes formData
+  Populate.DistributeLabelTextBoxesVertically formData
 End Sub
 
 Public Sub POC_PopulateAFewLabelTextBoxes()

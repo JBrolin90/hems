@@ -39,17 +39,17 @@ Private Sub TestCreateAForm()                        'TODO Rename test
     On Error GoTo TestFail
     
     'Arrange:
-    Dim FormName As String
+    Dim formName As String
     Dim obj As AccessObject
     Dim TestForm As Form
     'Act:
-    FormName = "TestMethod1Form"
-    CreateStarterForm FormName
-    Set obj = CurrentProject.AllForms.Item(FormName)
-    Set TestForm = DesignMode(FormName)
-    Set TestForm = FormMode(FormName)
-    CloseForm FormName
-    DeleteForm FormName
+    formName = "TestMethod1Form"
+    CreateStarterForm formName
+    Set obj = CurrentProject.AllForms.Item(formName)
+    Set TestForm = DesignMode(formName)
+    Set TestForm = FormMode(formName)
+    CloseForm formName
+    DeleteForm formName
     'Assert:
     Assert.Succeed
 

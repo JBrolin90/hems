@@ -13,25 +13,29 @@ Option Explicit
 
 Implements ICFormManipulation
 
-Private Sub ICFormManipulation_CreateStandardForm(ByVal FormName As String)
-  FormManipulation.CreateStarterForm FormName
+Private Sub ICFormManipulation_BuildContinuousForm(formData As IFormData)
+  Populate.BuildContinuousForm formData
+End Sub
+
+Private Sub ICFormManipulation_CreateStandardForm(ByVal formName As String)
+  FormManipulation.CreateStarterForm formName
 End Sub
 Private Sub ICFormManipulation_BuildSingleForm(ByRef formData As IFormData)
   Populate.BuildSingleForm formData
 End Sub
-Private Function ICFormManipulation_FormMode(ByVal FormName As String) As Form
-  Set ICFormManipulation_FormMode = FormManipulation.FormMode(FormName)
+Private Function ICFormManipulation_FormMode(ByVal formName As String) As Form
+  Set ICFormManipulation_FormMode = FormManipulation.FormMode(formName)
 End Function
-Private Function ICFormManipulation_DesignMode(ByVal FormName As String) As Form
-  Set ICFormManipulation_DesignMode = FormManipulation.DesignMode(FormName)
+Private Function ICFormManipulation_DesignMode(ByVal formName As String) As Form
+  Set ICFormManipulation_DesignMode = FormManipulation.DesignMode(formName)
 End Function
-Private Sub ICFormManipulation_CloseForm(ByVal FormName As String)
-  FormManipulation.CloseForm FormName
+Private Sub ICFormManipulation_CloseForm(ByVal formName As String)
+  FormManipulation.CloseForm formName
 End Sub
-Private Sub ICFormManipulation_DeleteForm(ByVal FormName As String)
-  FormManipulation.DeleteForm FormName
+Private Sub ICFormManipulation_DeleteForm(ByVal formName As String)
+  FormManipulation.DeleteForm formName
 End Sub
 
-Private Sub ICFormManipulation_FillFormTextBoxes(inForm as Form, formData as iFormData)
+Private Sub ICFormManipulation_FillFormTextBoxes(inForm As Form, formData As IFormData)
   FormManipulation.FillFormTextBoxes inForm, formData
 End Sub
