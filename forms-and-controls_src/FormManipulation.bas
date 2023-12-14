@@ -48,13 +48,10 @@ NonExisting:
     Exists = False
 End Function
 
-Public Sub FillForm(ByVal formData As IFormData)
-  Dim frmAddr As Form
-  Set frmAddr = FormMode(formData.FormName)
-  Dim field As DAO.field
+
+Public Sub FillFormTextBoxes(inForm as Form, formData as iFormData)
+  Dim field As DAO.Field
   For Each field In formData.Columns
-      frmAddr.Controls(Controls.TextBoxPrefix + field.name) = CStr(field.Value)
-      Debug.Print field.name + ": " + CStr(field.Value)
+      inForm.Controls(Controls.TextBoxPrefix + field.Name) = CStr(field.Value)
   Next
 End Sub
-

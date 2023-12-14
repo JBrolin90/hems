@@ -32,6 +32,6 @@ Private Sub ICFormManipulation_DeleteForm(ByVal FormName As String)
   FormManipulation.DeleteForm FormName
 End Sub
 
-Private Sub ICFormManipulation_FillForm(formData As IFormData)
-  FormManipulation.FillForm formData
+Private Sub ICFormManipulation_FillFormTextBoxes(inForm as Form, formData as iFormData)
+  FormManipulation.FillFormTextBoxes inForm, formData
 End Sub
