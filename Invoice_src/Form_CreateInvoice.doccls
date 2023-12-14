@@ -73,16 +73,12 @@ Private Sub FillMonthsCombobox()
   Dim rst As DAO.Recordset
   Set rst = GetDBObject().MonthNames()
   Set Me.cbMonth.Recordset = rst
-  Me.cbMonth.Value = Me.cbMonth.ItemData(month(Now()) - 2)
+  Me.cbMonth.Value = Me.cbMonth.ItemData(month(Now()) - 2) 'ToDo Create a PrevMonth capable class/module in Utilities
 End Sub
 
 Private Sub FillAddressCustomer()
   Dim formData As iFormData
-  Set formData = FormsAndControls.Factory.BuildFormData("AddressCustomer", Me.cbCustomer.Value)
-  Dim frmAddr As Form
-  Set frmAddr = Me.AddressCustomer.Form
-  Dim f As DAO.Field
-  For Each f In formData.Columns
-      frmAddr.Controls("tb_" + f.Name) = CStr(f.Value)
-  Next
+  Set formData = FormsAndControls.Factory.BuildFormData(Me.AddressCustomer.Form.Name, Me.cbCustomer.Value)
+  FormsAndControls.BuildManipulator().FillFormTextBoxes Me.AddressCustomer.Form, formData
+  Debug.Print
 End Sub
