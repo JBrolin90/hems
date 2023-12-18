@@ -1,0 +1,42 @@
+CREATE TABLE [dbo].[OrderHist] (
+    [OrderNr]    INT          NULL,
+    [Typ]        SMALLINT     NULL,
+    [FaktNr]     INT          NULL,
+    [ProdNr]     VARCHAR (18) NULL,
+    [ProdGr]     VARCHAR (10) NULL,
+    [RadNr]      SMALLINT     NULL,
+    [Beskr]      VARCHAR (80) NULL,
+    [KundId]     VARCHAR (8)  NULL,
+    [DelName]    VARCHAR (40) NULL,
+    [DelStreet]  VARCHAR (40) NULL,
+    [DelBox]     VARCHAR (40) NULL,
+    [DelZip]     VARCHAR (10) NULL,
+    [DelCity]    VARCHAR (40) NULL,
+    [OurRef]     VARCHAR (40) NULL,
+    [YourRef]    VARCHAR (40) NULL,
+    [FaktDatum]  DATETIME     NULL,
+    [BetVillkor] VARCHAR (3)  NULL,
+    [MomsKod]    VARCHAR (8)  NULL,
+    [Konto]      VARCHAR (6)  NULL,
+    [Kst]        VARCHAR (6)  NULL,
+    [Kb]         VARCHAR (6)  NULL,
+    [Pt]         VARCHAR (16) NULL,
+    [LevAntal]   FLOAT (53)   NULL,
+    [RabattProc] FLOAT (53)   NULL,
+    [Enhet]      VARCHAR (10) NULL,
+    [Vikt]       FLOAT (53)   NULL,
+    [Volym]      FLOAT (53)   NULL,
+    [Currency]   VARCHAR (3)  NULL,
+    [PrisBrutto] MONEY        NULL,
+    [TBBelopp]   MONEY        NULL,
+    [PrisIn]     MONEY        NULL,
+    [TBProc]     FLOAT (53)   NULL,
+    [User]       VARCHAR (10) NULL,
+    [KndKat]     VARCHAR (4)  NULL,
+    [Kampanj]    INT          NULL,
+    [AutoId]     INT          IDENTITY (1, 1) NOT NULL
+);
+
+
+GO
+

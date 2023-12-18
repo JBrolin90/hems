@@ -1,0 +1,6 @@
+{
+    "dataworkspace.excludedProjects": [
+        "HoldingDB/Holding/Holding/Holding.sqlproj",
+        "HoldingDB/Holding/Holding.sqlproj"
+    ]
+}

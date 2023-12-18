@@ -1,0 +1,42 @@
+CREATE TABLE [dbo].[CloudUser] (
+    [GuidId]           VARCHAR (40) NOT NULL,
+    [Name]             VARCHAR (40) NULL,
+    [Password]         VARCHAR (24) NULL,
+    [Active]           BIT          NULL,
+    [LoginTime]        DATETIME     NULL,
+    [KundNr]           VARCHAR (8)  NULL,
+    [Licenstagare]     VARCHAR (40) NULL,
+    [Dator]            VARCHAR (40) NULL,
+    [Grupp]            VARCHAR (40) NULL,
+    [FtgId]            VARCHAR (4)  NULL,
+    [Id]               INT          NULL,
+    [BokAktiv]         BIT          NULL,
+    [FaktAktiv]        BIT          NULL,
+    [LevAktiv]         BIT          NULL,
+    [LonAktiv]         BIT          NULL,
+    [TidAktiv]         BIT          NULL,
+    [Supervisor]       BIT          NULL,
+    [Bok]              BIT          NULL,
+    [BokTitta]         BIT          NULL,
+    [Fakt]             BIT          NULL,
+    [FaktTitta]        BIT          NULL,
+    [Kassarapport]     BIT          NULL,
+    [Lev]              BIT          NULL,
+    [LevTitta]         BIT          NULL,
+    [LevAttestera]     BIT          NULL,
+    [LevImportDokToDb] BIT          NULL,
+    [Lon]              BIT          NULL,
+    [Tid]              BIT          NULL,
+    [System]           BIT          NULL,
+    [Sparr]            BIT          NULL,
+    [DisconnectedBy]   INT          NULL,
+    [DisconnectedTime] DATETIME     NULL,
+    [AutoId]           INT          IDENTITY (1, 1) NOT NULL,
+    [Email]            VARCHAR (80) NULL,
+    [PersonNummer]     VARCHAR (13) NULL,
+    PRIMARY KEY CLUSTERED ([GuidId] ASC)
+);
+
+
+GO
+
